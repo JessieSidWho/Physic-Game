@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Psychic Game</h1><br>
+    <h4>Guessing what letter I'm thinking of . .</h3><br>
+    <h4>Wins: <span id="winNums"></span></h4>
+    <h4>Losses: <span id="lossNums"></span></h4><br>
+    <h4>Guesses Left: <span id="guessed"></span></h4>
+    <h5>Letters used so far: <span id="lettersUsed"></span></h5>
+
+    <script>
+      
+      $(document).ready(function(){
+
+        let wins = 0;
+        let losses = 0;
+        let guessesLeft = 10;
+        let letters = "";
+        let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k','l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+        let lettersUsed = document.getElementById("lettersUsed");
+        let winNums = document.getElementById("winNums");
+        let lossNums = document.getElementById("lossNums");
+        let guessed = document.getElementById("guessed");
+
+
+
+        document.onkeyup = function(event) {
+          let random = function(){
+          return alphabet[Math.floor(Math.random()*26)];
+        }
+    
+            let x = random();
+    
+            console.log(x);
+
+            var userInput = event.key;
+            letters += userInput + ", ";
+            
+
+            if (userInput !== x) {
+                guessesLeft -= 1;
+            }  
+
+            if (userInput === x) {
+                wins++;
+                letters = "";
+                guessesLeft = 10;
+                return x;
+            } 
+
+            if (letters.split(", ").length === 10) {
+                losses++;
+                letters = "";
+                guessesLeft = 10;
+                return x;
+            } 
+            
+            
+            lettersUsed.textContent = letters;
+            winNums.textContent = wins;
+            lossNums.textContent = losses;
+            guessed.textContent = guessesLeft;
+
+            return x;
+            
+        }
+
+
+    });
+    
+    </script>
+    
+</body>
+</html>
