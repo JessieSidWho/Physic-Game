@@ -8,13 +8,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    <h1>Psychic Game</h1><br>
-    <h4>Guessing what letter I'm thinking of . .</h3><br>
-    <h4>Wins: <span id="winNums"></span></h4>
-    <h4>Losses: <span id="lossNums"></span></h4><br>
-    <h4>Guesses Left: <span id="guessed"></span></h4>
-    <h5>Letters used so far: <span id="lettersUsed"></span></h5>
+<body class="container p-3 mb-2 bg-secondary text-white jumbotron text-center p-3 mb-2 bg-secondary text-white">
+    <div class="row">
+        <div class="col-md-12 mb-6">
+          <h1 class="pb-3">Psychic Game</h1>
+        </div>
+    </div>
+
+    <div class="row m-6">
+        <div class="col-md-6 offset-3 border border-info p-6">
+          <h4 class="text-center pt-3">Guessing what letter I'm thinking of . .</h3><br>
+          <h4 class="text-center">Wins: <br><span id="winNums"></span></h4>
+          <h4 class="text-center">Losses: <br><span id="lossNums"></span></h4>
+          <h4 class="text-center">Guesses Left: <br><span id="guessed"></span></h4>
+          <h5 class="text-center pb-3">Letters used so far: <br><span id="lettersUsed"></span></h5>
+        </div>
+    </div>
 
     <script>
       
@@ -33,7 +42,8 @@
 
 
         document.onkeyup = function(event) {
-          let random = function(){
+
+        let random = function(){
           return alphabet[Math.floor(Math.random()*26)];
         }
     
@@ -69,7 +79,7 @@
             lossNums.textContent = losses;
             guessed.textContent = guessesLeft;
 
-            return x;
+            // return x;
             
         }
 
